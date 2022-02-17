@@ -7,6 +7,7 @@ const app = Vue.createApp({
   el: '#app',
   data () {
     return {
+      showEdit: false,
       newItem: '',
       todos: []
     }
@@ -37,6 +38,9 @@ const app = Vue.createApp({
       if (confirm('are you sure to delete this todo?')) {
         this.todos.splice(index, 1)
       }
+    },
+    toggleShowEdit () {
+      this.showEdit = true
     },
     changeTitle: function (title) {
       this.title = title

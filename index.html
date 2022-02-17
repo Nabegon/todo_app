@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>My Vue App</title>
+  <script src="https://unpkg.com/vue@3.2.31"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="app" class="container">
+    {{ test }}
+    <ul>
+      <li v-for="(todo, index) in todos">
+        {{ todo.title }}
+        <button @click="deleteItem(index)" class="command">delete</button>
+        <button @click="changeTitle(index)">edit</button>
+      </li>
+      <li v-show="!todos.length">Nothing to do, yay!</li>
+    </ul>
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="newItem">
+      <input type="submit" value="Add">
+    </form>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>

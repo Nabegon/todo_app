@@ -12,14 +12,12 @@ const app = Vue.createApp({
     todos: {
       handler: function () {
         localStorage.setItem('todos', JSON.stringify(this.todos))
-        alert('data saved')
       },
       deep: true
     }
   },
   mounted: function () {
     this.todos = JSON.parse(localStorage.getItem('todos')) || []
-    alert('data loaded')
   },
   methods: {
     addItem () {

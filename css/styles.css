@@ -1,10 +1,11 @@
 body {
     font-size: 16px;
     font-family: Verdana, sans-serif;
+    vertical-align:baseline
 }
 
 .container {
-    width: 300px;
+    width: 500px;
     margin: auto;
 }
 
@@ -12,20 +13,54 @@ body {
     font-size: 16;
     border-bottom: 1px solid #ddd;
     padding: 16px 0px;
+    text-align: center;
+
 }
 
 #app li {
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
 #app input[type="text"] {
-    padding: 2px;
+    padding: 6px;
 }
 
-.command {
-    font-size: 12px;
+.delete-button {
+    font-size: 16px;
     cursor: pointer;
-    color: aqua;
+}
+
+.edit-button {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.save-button {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.edit-box {
+    vertical-align: middle; 
+    position: relative;
+}
+
+.add-button {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* .edit-option{
+    margin-left: auto;
+} */
+.edit-option > input {
+    vertical-align: middle; 
+    position: relative; 
+}
+
+select, input, textarea { 
+    vertical-align: middle; 
+    position: relative; 
 }
 
 #app ul {
@@ -37,3 +72,32 @@ body {
     text-decoration: line-through;
     color: #bbb;
   }
+
+  #app button {
+    float: right;
+  }
+
+  .box {
+      display: flex;
+  }
+
+  .box > div {
+    padding: 5px;
+  }
+
+  .box>button:nth-of-type(1){
+    margin-left: auto;
+}
+
+  ul li {
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+    display: block;
+  }
+
+.input {
+    width: 420px;
+    position: relative;
+    padding-top: 1.5rem;
+}

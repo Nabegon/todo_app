@@ -2,11 +2,12 @@
 // (function () {
 //   'use strict'
 // import { v4 as uuidv4 } from 'uuid'
+// import { createApp } from 'vue'
 const app = Vue.createApp({
-// new Vue({
-  el: '#app',
+  // el: '#app',
   data () {
     return {
+      uuid: '',
       showEdit: false,
       newItem: '',
       todos: []
@@ -26,24 +27,27 @@ const app = Vue.createApp({
     alert('data loaded')
   },
   methods: {
-    addItem: function () {
+    addItem () {
       const newTodoObject = {
-        // id: uuidv4(),
-        title: this.newItem
+        title: this.newItem,
+        edit: false
       }
       this.todos.push(newTodoObject)
       this.newItem = ''
     },
-    deleteItem: function (index) {
+    deleteItem (index) {
       if (confirm('are you sure to delete this todo?')) {
         this.todos.splice(index, 1)
       }
     },
-    toggleShowEdit () {
-      this.showEdit = true
+    // toggleShowEdit () {
+    //   this.showEdit = !this.showEdit
+    // },
+    editTodo (index) {
+      this.todos[index].edit = true
     },
-    changeTitle: function (title) {
-      this.title = title
+    finishEdit (index) {
+      this.todos[index].edit = false
     }
   }
 // })

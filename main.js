@@ -1,13 +1,8 @@
-// import Vue from 'vue'
-// (function () {
-//   'use strict'
-// import { v4 as uuidv4 } from 'uuid'
-// import { createApp } from 'vue'
 const app = Vue.createApp({
   // el: '#app',
   data () {
     return {
-      uuid: '',
+      editedTodo: '',
       showEdit: false,
       newItem: '',
       todos: []
@@ -40,16 +35,20 @@ const app = Vue.createApp({
         this.todos.splice(index, 1)
       }
     },
-    // toggleShowEdit () {
-    //   this.showEdit = !this.showEdit
-    // },
     editTodo (index) {
       this.todos[index].edit = true
     },
     finishEdit (index) {
       this.todos[index].edit = false
+      this.updateItem(index)
+    },
+    updateItem (index) {
+      this.todos.splice(index, 1, {
+        title: this.editedTodo,
+        edit: false
+      })
+      this.editedTodo = ''
     }
   }
-// })
-})// ()
+})
 app.mount('#app')

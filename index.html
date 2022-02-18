@@ -15,13 +15,9 @@
     <button @click="deleteItem(index)" class="command">delete</button>
     <button @click="editTodo(index)">edit</button>
     <dev v-if="todo.edit">
-      <input type="text" v-model="todo.title">
+      <input type="text" v-model="editedTodo">
       <button @click="finishEdit(index)">save</button>
     </dev>
-      <!-- <form  @submit.prevent="editTodo(editedTodo)" v-if="showEdit">
-      <span type="text" v-if="showEdit" v-model="editedTodo" v-show="showEdit"></span>
-      <span type="submit" v-if="showEdit" value="Edit" v-show="showEdit">save</span>
-      </form> -->
   </li>
   <li v-show="!todos.length">Nothing to do, yay!</li>
 </ul>

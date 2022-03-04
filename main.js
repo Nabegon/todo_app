@@ -9,8 +9,7 @@ const app = Vue.createApp({
           title: '',
           edit: ''
         }
-      ],
-      todo: ''
+      ]
     }
   },
   watch: {

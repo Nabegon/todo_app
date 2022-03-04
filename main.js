@@ -3,13 +3,9 @@ const app = Vue.createApp({
   data () {
     return {
       showEdit: false,
-      newItem: '',
-      todos: [
-        {
-          title: '',
-          edit: ''
-        }
-      ]
+      newTodo: '',
+      todos: [],
+      todoEditStatus: []
     }
   },
   mounted: function () {
@@ -17,33 +13,25 @@ const app = Vue.createApp({
   },
   methods: {
     addItem () {
-      const newTodoObject = {
-        title: this.newItem,
-        edit: false
-      }
-      this.todos.push(newTodoObject)
+      this.todos.push(this.newTodo)
       localStorage.setItem('todos', JSON.stringify(this.todos))
-      this.newItem = ''
+      this.newTodo = ''
+      this.todoEditStatus.push(false)
     },
     deleteItem (index) {
       if (confirm('are you sure to delete this todo?')) {
         this.todos.splice(index, 1)
+        this.todoEditStatus.splice(index, 1)
       }
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
     editTodo (index) {
-      this.todos[index].edit = true
-    },
-    finishEdit (index) {
-      this.todos[index].edit = false
-      this.updateItem(index)
+      this.todoEditStatus[index] = true
     },
     updateItem (index) {
-      this.todos.splice(index, 1, {
-        title: this.todos[index].title,
-        edit: false
-      })
+      this.todos.splice(index, 1, this.todos[index])
       localStorage.setItem('todos', JSON.stringify(this.todos))
+      this.todoEditStatus[index] = false
     }
   }
 })

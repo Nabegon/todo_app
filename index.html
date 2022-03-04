@@ -12,12 +12,12 @@
     <h1>My todo</h1>
     <ul>
     <li v-for="(todo, index) in todos" class="box">
-    <div v-if="todo.edit" class="edit-option">
-      {{ todo.title }}&nbsp;&nbsp;<input type="text" v-model="todos[index].title" class="edit-box" />
+    <div v-if="todoEditStatus[index]" class="edit-option">
+      {{ todo }}&nbsp;&nbsp;<input type="text" v-model="todos[index]" class="edit-box" />
       <button @click="updateItem(index)" class="save-button">save</button>
     </div>
     <div v-else>
-      {{ todo.title }}
+      {{ todo }}
     </div>
     <button @click="deleteItem(index)" class="delete-button">delete</button>
     <button @click="editTodo(index)" class="edit-button">edit</button>
@@ -25,7 +25,7 @@
   <li v-show="!todos.length">Nothing to do, yay!</li>
 </ul>
     <form @submit.prevent="addItem">
-      <input type="text" v-model="newItem" class="input">
+      <input type="text" v-model="newTodo" class="input">
       <input type="submit" value="Add" class="add-button">
     </form>
   </div>

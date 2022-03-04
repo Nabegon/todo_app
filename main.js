@@ -2,10 +2,15 @@ const app = Vue.createApp({
   // el: '#app',
   data () {
     return {
-      editedTodo: '',
       showEdit: false,
       newItem: '',
-      todos: []
+      todos: [
+        {
+          title: '',
+          edit: ''
+        }
+      ],
+      todo: ''
     }
   },
   watch: {
@@ -42,10 +47,9 @@ const app = Vue.createApp({
     },
     updateItem (index) {
       this.todos.splice(index, 1, {
-        title: this.editedTodo,
+        title: this.todos[index].title,
         edit: false
       })
-      this.editedTodo = ''
     }
   }
 })

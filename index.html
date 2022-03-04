@@ -13,7 +13,7 @@
     <ul>
     <li v-for="(todo, index) in todos" class="box">
     <div v-if="todo.edit" class="edit-option">
-      {{ todo.title }}&nbsp;&nbsp;<input type="text" v-model="editedTodo" class="edit-box" />
+      {{ todo.title }}&nbsp;&nbsp;<input type="text" v-model="todos[index].title" class="edit-box" />
       <button @click="updateItem(index)" class="save-button">save</button>
     </div>
     <div v-else>

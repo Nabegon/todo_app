@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>My Vue App</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="app" class="container">
+    <h1>My todo</h1>
+    <ul>
+    <li v-for="(todo, index) in todos" class="box">
+    <div v-if="todoEditStatus[index]" class="edit-option">
+      <input type="text" v-model="todos[index]" class="edit-box" />
+      <button @click="updateItem(index)" class="save-button">save</button>
+    </div>
+    <div v-else>
+      {{ todo }}
+    </div>
+    <button @click="deleteItem(index)" class="delete-button">delete</button>
+    <button @click="editTodo(index)" class="edit-button">edit</button>
+  </li>
+  <li v-show="!todos.length">Nothing to do, yay!</li>
+</ul>
+    <form @submit.prevent="addItem">
+      <input type="text" v-model="newTodo" class="input">
+      <input type="submit" value="Add" class="add-button">
+    </form>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
